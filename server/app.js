@@ -27,12 +27,12 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // index file path
 app.get('/*', (req, res) => {
-    return res.status(200).sendFile(__dirname + './client/build/index.html')
+    return res.status(200).sendFile(__dirname + '/build/index.html')
 })
 
 
 app.get('/', (req, res) => {
-    return res.status(200).sendFile(__dirname + './client/build/index.html')
+    return res.status(200).sendFile(__dirname + '/build/index.html')
 })
 
 
