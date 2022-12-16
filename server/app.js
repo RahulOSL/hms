@@ -22,19 +22,15 @@ app.use(express.json({
 app.use(require(path.join(__dirname, './controller/auth')));
 
 
-// //build folder path
-app.use(express.static(path.join(__dirname, 'build')));
-
-// index file path
-app.get('/*', (req, res) => {
-    return res.status(200).sendFile(__dirname + '/build/index.html')
-})
-
-
-app.get('/', (req, res) => {
-    return res.status(200).sendFile(__dirname + '/build/index.html')
-})
-
+app.use(express.static(path.join(__dirname, "./build")));
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "./build/index.html"),
+        function (err) {
+            res.status(500).send(err);
+        }
+    );
+});
 
 const PORT = process.env.PORT;
 
